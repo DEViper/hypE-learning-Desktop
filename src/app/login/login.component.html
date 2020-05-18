@@ -1,0 +1,5 @@
+<form action="javascript:void(0);">
+    <p><input matInput #email name="email" id="email" type="text" placeholder="Email"></p>
+    <p><input matInput #password name="password" id="password" type="password" placeholder="Password"></p>
+    <p><button mat-raised-button (click)="login(email.value, password.value)" type="submit">Login</button><a routerLink="/register">Register</a></p>
+</form>

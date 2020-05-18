@@ -1,0 +1,8 @@
+<main>
+    <ul>
+        <li *ngFor="let course of courses">
+            <div class="title">{{course.title}}</div>
+            <button (click)="showCourse(course.id)" mat-raised-button>Zobacz</button>
+        </li>
+    </ul>
+</main>

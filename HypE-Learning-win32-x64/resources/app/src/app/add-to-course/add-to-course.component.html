@@ -1,0 +1,12 @@
+<main>
+    <ul>
+        <li *ngFor="let user of course">
+            <div class="title">{{user.firstName}} {{user.lastName}}<br>{{user.email}}</div>
+            <button style="background-color: red;" (click)="deleteFromCourse(user.id)" mat-raised-button>Usuń Kandydata</button>
+        </li>
+        <li *ngFor="let user of users">
+            <div class="title">{{user.firstName}} {{user.lastName}}<br>{{user.email}}</div>
+            <button (click)="addToCourse(user.id)" mat-raised-button>Dodaj Kandydata</button>
+        </li>
+    </ul>
+</main>

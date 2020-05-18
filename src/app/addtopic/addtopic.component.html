@@ -1,0 +1,8 @@
+<main>
+    <div id="course">
+        <p>Tytuł: <input #title type="text" placeholder=""></p>
+        <p>Opis: <input #desc type="text" placeholder=""></p>
+        <p>Image: <button style="margin-left: 10px;" (click)="clickFile()" mat-raised-button>Wyślij plik</button><input id="getfile" accept="application/pdf" (change)="sendFile($event.target.files)" style="display: none;" type="file"/></p>
+        <p><button id="submit" mat-raised-button (click)="addTopic(title.value, desc.value)" type="submit">Dodaj temat</button></p>
+    </div>
+</main>

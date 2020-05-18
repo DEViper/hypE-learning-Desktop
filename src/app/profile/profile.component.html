@@ -1,0 +1,13 @@
+<main>
+    <div id="profile" *ngIf="auth.$user != undefined">
+        <p>Email: <input id="email" [value]="auth.$user.email" disabled></p>
+        <p>Imię: <input id="first" [value]="auth.$user.firstName" disabled></p>
+        <p>Nazwisko: <input id="last" [value]="auth.$user.lastName" disabled></p>
+        <p>Rola: <input id="role" [value]="auth.$user.role" disabled></p>
+        <p>
+            <button mat-raised-button id="edit" routerLink="/profileeditor">Edit Profile</button>
+            <button mat-raised-button id="courses" routerLink="/profile/courses">Your courses</button>
+            <button mat-raised-button *ngIf="auth.isAdmin()" id="admin" routerLink="/adminpanel">Panel Admina</button>
+        </p>
+    </div>
+</main>

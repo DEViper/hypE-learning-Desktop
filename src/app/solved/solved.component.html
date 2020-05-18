@@ -1,0 +1,12 @@
+<main>
+    <div id="course">
+        <div class="title">{{topic["title"]}}</div>
+        <div class="description">{{topic["description"]}}</div>
+    </div>
+    <ul>
+        <li *ngFor="let solution of solutions">
+            <div class="title">{{solution.solvers[0].firstName}} {{solution.solvers[0].lastName}}</div>
+            <a id="{{solution.solvers[0].id}}" href="{{solution.fileUrl}}"></a><button (click)="clickLink(solution.solvers[0].id)" mat-raised-button>Zobacz zadanie</button>
+        </li>
+    </ul>
+</main>

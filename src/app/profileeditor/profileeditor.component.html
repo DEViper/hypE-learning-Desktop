@@ -1,0 +1,8 @@
+<main>
+    <div id="profile" *ngIf="auth.$user != undefined">
+        <p>Email: <input #email name="email" id="email" type="text" [value]="auth.$user.email" placeholder="example@example.pl"></p>
+        <p>Password: <input #password name="password" id="password" type="password" placeholder="••••••••"></p>
+        <p>Image: <button style="margin-left: 10px;" (click)="clickFile()" mat-raised-button>Wyślij zdjęcie</button><input id="getfile" accept="image/jpeg, image/png" (change)="sendFile($event.target.files)" style="display: none;" type="file"/></p>
+        <p><button mat-raised-button (click)="editProfile(email.value, password.value)" type="submit">Submit Changes</button></p>
+    </div>
+</main>

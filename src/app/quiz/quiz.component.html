@@ -1,0 +1,20 @@
+<main>
+    <ul>
+        <li>
+            <div class="title">{{quiz["title"]}}</div>
+        </li>
+        <li *ngFor="let question of quiz['questions']; let i = index" [attr.data-index]="i">
+            <div class="title">{{question["title"]}}</div>
+
+            <form>
+                <p>{{question.a}}<input type="radio" (change)="changeAnswer(i, 'a')" value="a" name="a"></p>
+                <p>{{question.b}}<input type="radio" (change)="changeAnswer(i, 'b')" value="b" name="a"></p>
+                <p>{{question.c}}<input type="radio" (change)="changeAnswer(i, 'c')" value="c" name="a"></p>
+                <p>{{question.d}}<input type="radio" (change)="changeAnswer(i, 'd')" value="d" name="a"></p>
+            </form>
+        </li> 
+        <li>
+            <button (click)="sendAnswers()" mat-raised-button>Wyślij</button>
+        </li>
+    </ul>
+</main>

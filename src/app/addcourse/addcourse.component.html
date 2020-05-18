@@ -1,0 +1,6 @@
+<div>
+    <p>Title: <input matInput #title name="title" id="title" type="text" placeholder="Lekcje Python"></p>
+    <p>Description: <input matInput #desc name="desc" id="desc" type="text" placeholder="Lekcje odbywają się w pon i sob"></p>
+    <p>Announcement: <input matInput #ann name="ann" id="ann" type="text" placeholder="Moved to friday"></p>
+    <p><button mat-raised-button (click)="addcourse(title.value, desc.value, ann.value)" type="submit">Add course</button></p>
+<div>

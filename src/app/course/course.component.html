@@ -1,0 +1,23 @@
+<main>
+    <div id="course">
+        <div class="title">{{course["title"]}}</div>
+        <div class="description">{{course["description"]}}</div>
+        <div class="important">{{course["announcement"]}}</div>
+        <button *ngIf="auth.isInstructor()" id="candidates" routerLink='/course/{{course["id"]}}/candidates' mat-raised-button>Zobacz Kandydatów</button>
+        <button *ngIf="auth.isInstructor()" id="addtopic" routerLink='/course/{{course["id"]}}/addtopic' mat-raised-button>Dodaj Temat</button>
+    </div>
+    <ul>
+        <li *ngFor="let topic of topics">
+            <div class="title">{{topic.title}}</div>
+            <div class="description">{{topic.description}}</div>
+            <button id="send" *ngIf="!auth.isInstructor()" (click)="clickFile()" mat-raised-button>Wyślij zadanie</button><input id="getfile" accept="application/pdf" (change)="sendFile($event.target.files, topic.id)" style="display: none;" type="file"/>
+            <button id="quiz" *ngIf="!auth.isInstructor() && topic.quiz != 0" routerLink="/course/{{course['id']}}/{{topic.id}}/{{topic.quiz.id}}" mat-raised-button>Rozwiąż quiz</button>
+            <button id="solutions" *ngIf="auth.isInstructor()" routerLink="/course/{{course['id']}}/{{topic.id}}" mat-raised-button>Zobacz rozwiązania Studentów</button>
+            <button id="edit" *ngIf="auth.isInstructor()" routerLink="/course/{{course['id']}}/{{topic.id}}/edit" mat-raised-button>Edytuj Temat</button>
+            <button id="delete" *ngIf="auth.isInstructor()" (click)="deleteTopic(topic.id)" mat-raised-button>Usuń Temat</button>
+            <button id="delete" routerLink="/course/{{course['id']}}/{{topic.id}}/addquiz" *ngIf="auth.isInstructor() && topic.quiz == 0" mat-raised-button>Dodaj Quiz</button>
+            <button id="delete" routerLink="/course/{{course['id']}}/{{topic.id}}/{{topic.quiz.id}}/editquiz" *ngIf="auth.isInstructor() && topic.quiz != 0" mat-raised-button>Edytuj Quiz</button>
+            <a id="{{topic.id}}" href="{{topic.fileUrl}}" target="_blank"></a><button (click)="clickLink(topic.id)" *ngIf="topic.fileUrl != ''" mat-raised-button>Zobacz zadanie</button>
+        </li>
+    </ul>
+</main>

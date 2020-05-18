@@ -1,0 +1,32 @@
+<main>
+    <ul>
+        <li>
+            <div class="title">{{quiz["title"]}}</div>
+        </li>
+        <li>
+            <button id="add" (click)="addQuiz()" mat-raised-button>+</button>
+        </li>
+        <li *ngFor="let question of questions; let i of index">
+            <div class="title">{{question["title"]}}</div>
+
+            <form action="javascript:void(0);">
+                <p><input type="text" (change)="updateQuestion(i, 'title', $event)" [value]="question.title"  placeholder="Tytuł"></p>
+                <p><input type="text" (change)="updateQuestion(i, 'a', $event)" [value]="question.a" placeholder="a"><input (change)="updateQuestion(i, 'correct', $event)" type="radio" value="a" name="a"></p>
+                <p><input type="text" (change)="updateQuestion(i, 'b', $event)" [value]="question.b" placeholder="b"><input (change)="updateQuestion(i, 'correct', $event)" type="radio" value="b" name="a"></p>
+                <p><input type="text" (change)="updateQuestion(i, 'c', $event)" [value]="question.c" placeholder="c"><input (change)="updateQuestion(i, 'correct', $event)" type="radio" value="c" name="a"></p>
+                <p><input type="text" (change)="updateQuestion(i, 'd', $event)" [value]="question.d" placeholder="d"><input (change)="updateQuestion(i, 'correct', $event)" type="radio" value="d" name="a"></p>
+                <button (click)="sendQuestion(i)" mat-raised-button>Wyślij</button>
+            </form>
+        </li> 
+        <li *ngFor="let question of quiz['questions']">
+            <div class="title">{{question["title"]}}</div>
+
+            <form>
+                <p>a: {{question.a}}</p>
+                <p>b: {{question.b}}</p>
+                <p>c: {{question.c}}</p>
+                <p>d: {{question.d}}</p>
+            </form>
+        </li> 
+    </ul>
+</main>

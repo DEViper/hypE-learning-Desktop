@@ -1,0 +1,14 @@
+<div id="menu">
+    <div id="logo" routerLink="/">
+        HypE-Learning
+    </div>
+    <ul id="options">
+        <li class="button" routerLink="/login" *ngIf="!auth.isLogged()">Logowanie</li>
+        <img [matMenuTriggerFor]="menu" *ngIf="auth.isLogged()" src="{{auth.$user.fileUrl}}">
+    </ul>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/profile" *ngIf="auth.isLogged()">Profil</button>
+        <button mat-menu-item routerLink="/addcourse" *ngIf="canAdd()">Dodaj Kurs</button>
+        <button mat-menu-item (click)="auth.logout()" *ngIf="auth.isLogged()">Wyloguj</button>
+    </mat-menu>
+</div>

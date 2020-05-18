@@ -1,0 +1,28 @@
+<main>
+    <ul>
+        <li *ngFor="let user of users">
+            <div class="title">{{user.firstName}} {{user.lastName}} <br> {{user.email}}</div>
+            <div class="description" *ngIf="user.role != 'inactive'; then show; else edit"></div>
+            <div class="important">{{user.id}}</div>
+            <button (click)="updateUser(user)" mat-raised-button>Update</button>
+
+            <ng-template #edit>
+                <mat-form-field style="padding-left: 20px">
+                    <mat-label>{{user.role}}</mat-label>
+                    <mat-select (selectionChange)="selected($event, user.id)">
+                        <mat-option value="student">Student</mat-option>
+                        <mat-option value="instructor">Instructor</mat-option>
+                        <mat-option value="admin">Admin</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p>Banned: <input id="uid-{{user.id}}" *ngIf="!user.isBlocked" type="checkbox"> <input id="uid-{{user.id}}" *ngIf="user.isBlocked" type="checkbox" checked></p>
+            </ng-template>
+            <ng-template #show>
+                <div style="padding: 20px">
+                    {{user.role}}
+                </div>
+                <p>Banned: <input id="uid-{{user.id}}" *ngIf="!user.isBlocked" type="checkbox"> <input id="uid-{{user.id}}" *ngIf="user.isBlocked" type="checkbox" checked></p>
+            </ng-template>
+        </li>
+    </ul>
+</main>

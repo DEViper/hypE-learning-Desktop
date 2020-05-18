@@ -1,0 +1,7 @@
+<form action="javascript:void(0);">
+    <p><input #email name="email" id="email" type="text" placeholder="Email"></p>
+    <p><input #password name="password" id="password" type="password" placeholder="Password"></p>
+    <p><input #first name="first" id="first" type="text" placeholder="First Name"></p>
+    <p><input #last name="last" id="last" type="text" placeholder="Surname"></p>
+    <p><button mat-raised-button (click)="register(email.value, password.value, first.value, last.value)" type="submit">Register</button><a routerLink="/login">Login</a></p>
+</form>
